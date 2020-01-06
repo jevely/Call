@@ -70,8 +70,6 @@ dependencies {
     implementation 'com.facebook.android:facebook-android-sdk:5.12.1'
 }
 
-apply plugin: 'com.google.gms.google-services'
-
 repositories {
     flatDir {
         dirs 'libs'

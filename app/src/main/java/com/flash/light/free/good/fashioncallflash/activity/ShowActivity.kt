@@ -35,6 +35,8 @@ class ShowActivity : BaseActivity() {
 
     private lateinit var themeContent: ThemeContent
 
+    private var isRequestWindowPermission = false
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_show)
@@ -86,6 +88,12 @@ class ShowActivity : BaseActivity() {
             if (msg.what == 0) {
                 call_bt.visibility = View.VISIBLE
                 calltheme.show(msg.obj as String?, getScreen())
+            } else if (msg.what == 1) {
+                Toast.makeText(
+                    CallApplication.getContext(),
+                    "Download error",
+                    Toast.LENGTH_SHORT
+                ).show()
             }
             call_load.visibility = View.GONE
         }
@@ -143,6 +151,7 @@ class ShowActivity : BaseActivity() {
             } catch (e: Exception) {
                 e.printStackTrace()
                 Logger.d("现在线程终止")
+                handler.sendEmptyMessage(1)
             }
         })
         downloadThread.start()
@@ -165,12 +174,8 @@ class ShowActivity : BaseActivity() {
     override fun startActivityForResult(intent: Intent?, requestCode: Int, options: Bundle?) {
         super.startActivityForResult(intent, requestCode, options)
         if (requestCode == 1) {
-//            Logger.d("权限开启成功")
-//            SharedPreTool.getInstance()
-//                .putString(SharedPreTool.SELECT_THEME, themeContent.video_url!!)
-//            call_bt.text = resources.getString(R.string.theme_select)
-//            Toast.makeText(this@ShowActivity, "success", Toast.LENGTH_SHORT).show()
-            Handler().postDelayed(Runnable { permissionRequest() }, 2000)
+            Logger.d("权限开启成功")
+//            Handler().postDelayed(Runnable { permissionRequest() }, 2000)
         }
     }
 
@@ -185,7 +190,7 @@ class ShowActivity : BaseActivity() {
                 permissionDialog.setCallBack(object : PermissionDialog.OnCallBack {
 
                     override fun click() {
-
+                        isRequestWindowPermission = true
                     }
 
                     override fun cancel() {
@@ -200,7 +205,7 @@ class ShowActivity : BaseActivity() {
                 permissionDialog.setCallBack(object : PermissionDialog.OnCallBack {
 
                     override fun click() {
-
+                        isRequestWindowPermission = true
                     }
 
                     override fun cancel() {
@@ -222,7 +227,7 @@ class ShowActivity : BaseActivity() {
             permissionDialog.setCallBack(object : PermissionDialog.OnCallBack {
 
                 override fun click() {
-
+                    isRequestWindowPermission = true
                 }
 
                 override fun cancel() {
@@ -247,6 +252,14 @@ class ShowActivity : BaseActivity() {
 //                    1
 //                )
 //                LightalkWindow.getInstence().showlockScreen()
+    }
+
+    override fun onResume() {
+        super.onResume()
+        if (isRequestWindowPermission) {
+            isRequestWindowPermission = false
+            Handler().postDelayed(Runnable { permissionRequest() }, 500)
+        }
     }
 
 }
