@@ -18,10 +18,9 @@ import com.flash.light.free.good.fashioncallflash.content.ContactContent;
 import com.flash.light.free.good.fashioncallflash.db.DataBaseTool;
 import com.flash.light.free.good.fashioncallflash.db.ThemeContent;
 import com.flash.light.free.good.fashioncallflash.tool.CallTool;
+import com.flash.light.free.good.fashioncallflash.tool.ScreenTool;
 import com.flash.light.free.good.fashioncallflash.util.SharedPreTool;
 import com.flash.light.free.good.fashioncallflash.view.CallThemeBackView;
-
-import static com.flash.light.free.good.fashioncallflash.util.UtilsKt.getScreen;
 
 public class LightalkWindow {
 
@@ -71,6 +70,10 @@ public class LightalkWindow {
         layoutParams = new WindowManager.LayoutParams();
         layoutParams.width = WindowManager.LayoutParams.MATCH_PARENT;
         layoutParams.height = WindowManager.LayoutParams.MATCH_PARENT;
+
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.P) {
+            layoutParams.layoutInDisplayCutoutMode = WindowManager.LayoutParams.LAYOUT_IN_DISPLAY_CUTOUT_MODE_SHORT_EDGES;
+        }
 
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.KITKAT) {
             layoutParams.systemUiVisibility = View.SYSTEM_UI_FLAG_LAYOUT_STABLE | View
@@ -156,11 +159,13 @@ public class LightalkWindow {
      * 设置数据
      */
     public void setData(ContactContent contactContent, String phone, int type) {
-        call_name.setText("");
+
         if (contactContent != null) {
             call_name.setText(contactContent.getName());
             if (contactContent.getIcon() != null)
                 call_icon.setImageBitmap(contactContent.getIcon());
+        } else {
+            call_name.setText("Unknown caller");
         }
         call_num.setText(phone);
         if (type == 1) {
@@ -186,11 +191,10 @@ public class LightalkWindow {
         if (!isShow) {
             if (!getShowBackPath()) return;
             isShow = true;
-            Point screen = getScreen();
-            call_theme_back.setViewSize(screen.x, screen.y);
+            call_theme_back.setViewSize(ScreenTool.Companion.getInstance().getAllScreen().x, ScreenTool.Companion.getInstance().getAllScreen().y);
 
             ThemeContent content = DataBaseTool.Companion.getInstance().find(SharedPreTool.Companion.getInstance().getString(SharedPreTool.SELECT_THEME));
-            call_theme_back.show(content.getPath(), screen);
+            call_theme_back.show(content.getPath(), ScreenTool.Companion.getInstance().getAllScreen());
             wm.addView(mView, layoutParams);
 //            MainApplication.getInstance().isCallShow = true;
             showAnim = true;

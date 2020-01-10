@@ -4,6 +4,7 @@
     <string name="theme_select">Selected</string>
     <string name="theme_download">Downloading...</string>
     <string name="theme_bt_set">set</string>
+    <string name="theme_bt_download">Download</string>
 
     <string name="facebook_app_id">2533472876923057</string>
 
@@ -18,5 +19,9 @@
     <string name="tip_content">Find Fashion Call Flash and give permissions</string>
 
     <string name="dialog_permission_fail">Open access failed</string>
+
+    <string name="white_content">Please in white to let app live</string>
+    <string name="permission_tip">Authorize the following permissions,you can get cool call themes!</string>
+    <string name="white_tip">Authorize the following permissions,app will be more stable!</string>
 
 </resources>

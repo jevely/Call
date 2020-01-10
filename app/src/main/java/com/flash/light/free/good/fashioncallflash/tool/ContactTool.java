@@ -10,6 +10,7 @@ import android.util.Log;
 
 import com.flash.light.free.good.fashioncallflash.CallApplication;
 import com.flash.light.free.good.fashioncallflash.content.ContactContent;
+import com.flash.light.free.good.fashioncallflash.util.Logger;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -91,7 +92,7 @@ public class ContactTool {
             } catch (Exception e) {
                 e.printStackTrace();
             }
-            Log.d("LJW", "联系人获取完成" + contactContentList.size());
+            Logger.INSTANCE.d( "联系人获取完成" + contactContentList.size());
         }
     }
 

@@ -13,6 +13,7 @@
     <com.flash.light.free.good.fashioncallflash.view.CallThemeBackView
         android:id="@+id/call_theme_back"
         android:layout_width="match_parent"
+        android:background="#C22D2D"
         android:layout_height="match_parent" />
 
     <ImageView
@@ -21,7 +22,7 @@
         android:layout_height="70dp"
         android:layout_centerHorizontal="true"
         android:layout_marginTop="60dp"
-        android:src="@mipmap/ic_launcher" />
+        android:src="@mipmap/default_user" />
 
     <TextView
         android:id="@+id/call_num"

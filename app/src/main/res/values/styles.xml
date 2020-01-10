@@ -13,6 +13,8 @@
         <item name="android:fitsSystemWindows">true</item>
 
         <item name="android:windowBackground">#000</item>
+
+        <item name="android:windowTranslucentStatus">true</item>
     </style>
 
     <style name="dialog_screen" parent="@android:style/Theme.Dialog">

@@ -30,7 +30,7 @@ class DataTool {
     val themeList = mutableListOf<ThemeContent>()
     fun initData() {
         themeList.clear()
-        for (i in 0 until 16) {
+        for (i in 0 until 50) {
             val theme = ThemeContent()
             theme.image_url = "${NetUrl.THEME}hs_${i + 1}.png"
             theme.video_url = "${NetUrl.THEME}hs_${i + 1}.mp4"

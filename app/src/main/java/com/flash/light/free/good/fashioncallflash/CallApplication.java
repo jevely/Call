@@ -9,6 +9,7 @@ import androidx.multidex.MultiDexApplication;
 import com.flash.light.free.good.fashioncallflash.db.DataBaseTool;
 import com.flash.light.free.good.fashioncallflash.tool.DataTool;
 import com.flash.light.free.good.fashioncallflash.util.SharedPreTool;
+import com.flash.light.free.good.fashioncallflash.window.LightalkWindow;
 
 import java.util.List;
 
@@ -43,6 +44,8 @@ public class CallApplication extends MultiDexApplication {
 
         DataBaseTool.Companion.getInstance().initDataBase(this);
         DataTool.Companion.getInstance().initData();
+
+        LightalkWindow.getInstence().initView(this, true);
     }
 
     /**

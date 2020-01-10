@@ -4,4 +4,6 @@
     <color name="colorPrimaryDark">#00574B</color>
     <color name="colorAccent">#D81B60</color>
     <color name="translucent_background">#af000000</color>
+    <color name="line">#66666666</color>
+    <color name="line2">#66ffffff</color>
 </resources>
