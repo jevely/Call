@@ -5,5 +5,6 @@
     <color name="colorAccent">#D81B60</color>
     <color name="translucent_background">#af000000</color>
     <color name="line">#66666666</color>
-    <color name="line2">#66ffffff</color>
+    <color name="line2">#77494949</color>
+    <color name="switchback">#929292</color>
 </resources>

@@ -1,13 +1,17 @@
 package com.flash.light.free.good.fashioncallflash.adapter
 
+import android.app.Activity
+import android.app.ActivityOptions
 import android.content.Context
 import android.content.Intent
 import android.graphics.drawable.Drawable
+import android.os.Build
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.ImageView
 import android.widget.RelativeLayout
+import androidx.core.content.ContextCompat.startActivity
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import com.bumptech.glide.load.DataSource
@@ -21,7 +25,7 @@ import com.flash.light.free.good.fashioncallflash.tool.DataTool
 import com.flash.light.free.good.fashioncallflash.util.Logger
 import com.flash.light.free.good.fashioncallflash.util.getScreen
 
-class MainAdapter(val context: Context) : RecyclerView.Adapter<MainAdapter.MainViewHolder>() {
+class MainAdapter(val context: Activity) : RecyclerView.Adapter<MainAdapter.MainViewHolder>() {
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): MainViewHolder {
         val view =
             LayoutInflater.from(context).inflate(R.layout.main_recycler_layout, parent, false)

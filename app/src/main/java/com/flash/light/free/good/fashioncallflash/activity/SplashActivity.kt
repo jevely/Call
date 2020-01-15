@@ -9,6 +9,7 @@ import android.os.Handler
 import android.view.KeyEvent
 import android.widget.ImageView
 import android.widget.TextView
+import com.flash.light.free.good.fashioncallflash.R
 
 
 class SplashActivity : BaseActivity() {
@@ -18,7 +19,7 @@ class SplashActivity : BaseActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(com.flash.light.free.good.fashioncallflash.R.layout.activity_splash)
+        setContentView(R.layout.activity_splash)
 
         //打印hash
 //        try {
