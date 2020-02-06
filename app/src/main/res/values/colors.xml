@@ -7,4 +7,7 @@
     <color name="line">#66666666</color>
     <color name="line2">#77494949</color>
     <color name="switchback">#929292</color>
+
+    <color name="tab_unselect">#717171</color>
+    <color name="tab_select">#ECECEC</color>
 </resources>

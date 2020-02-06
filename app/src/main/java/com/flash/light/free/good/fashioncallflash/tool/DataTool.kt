@@ -54,4 +54,103 @@ class DataTool {
         Logger.d("themeList.size = ${themeList.size}")
 
     }
+
+    val animalTheme = mutableListOf<ThemeContent>()
+    val danceTheme = mutableListOf<ThemeContent>()
+    val electricTheme = mutableListOf<ThemeContent>()
+    val heartTheme = mutableListOf<ThemeContent>()
+    val otherTheme = mutableListOf<ThemeContent>()
+    val sceneryTheme = mutableListOf<ThemeContent>()
+    val sportTheme = mutableListOf<ThemeContent>()
+    val allTheme = mutableListOf<MutableList<ThemeContent>>()
+    fun initDataNew() {
+        // https://s3.amazonaws.com/download.filterisq.com/jar/newcall/animal/animal_1.mp4
+        //animal
+        for (i in 0 until 7) {
+            val theme = ThemeContent()
+            theme.image_url =
+                "https://s3.amazonaws.com/download.filterisq.com/jar/newcall/animal/animal_${i + 1}.webp"
+            theme.video_url =
+                "https://s3.amazonaws.com/download.filterisq.com/jar/newcall/animal/animal_${i + 1}.mp4"
+            DataBaseTool.getInstance().insertWords(theme)
+            animalTheme.add(theme)
+        }
+        //https://s3.amazonaws.com/download.filterisq.com/jar/newcall/dance/dance_1.mp4
+        //dance
+        for (i in 0 until 24) {
+            val theme = ThemeContent()
+            theme.image_url =
+                "https://s3.amazonaws.com/download.filterisq.com/jar/newcall/dance/dance_${i + 1}.png"
+            theme.video_url =
+                "https://s3.amazonaws.com/download.filterisq.com/jar/newcall/dance/dance_${i + 1}.mp4"
+            DataBaseTool.getInstance().insertWords(theme)
+            danceTheme.add(theme)
+        }
+        //https://s3.amazonaws.com/download.filterisq.com/jar/newcall/electric/electric_1.mp4
+        //electric
+        for (i in 0 until 15) {
+            val theme = ThemeContent()
+            theme.image_url =
+                "https://s3.amazonaws.com/download.filterisq.com/jar/newcall/electric/electric_${i + 1}.webp"
+            theme.video_url =
+                "https://s3.amazonaws.com/download.filterisq.com/jar/newcall/electric/electric_${i + 1}.mp4"
+            DataBaseTool.getInstance().insertWords(theme)
+            electricTheme.add(theme)
+        }
+        //https://s3.amazonaws.com/download.filterisq.com/jar/newcall/heart/heart_1.mp4
+        //heart
+        for (i in 0 until 19) {
+            val theme = ThemeContent()
+            theme.image_url =
+                "https://s3.amazonaws.com/download.filterisq.com/jar/newcall/heart/heart_${i + 1}.webp"
+            theme.video_url =
+                "https://s3.amazonaws.com/download.filterisq.com/jar/newcall/heart/heart_${i + 1}.mp4"
+            DataBaseTool.getInstance().insertWords(theme)
+            heartTheme.add(theme)
+        }
+        //https://s3.amazonaws.com/download.filterisq.com/jar/newcall/other/other_1.mp4
+        //other
+        for (i in 0 until 21) {
+            val theme = ThemeContent()
+            theme.image_url =
+                "https://s3.amazonaws.com/download.filterisq.com/jar/newcall/other/other_${i + 1}.webp"
+            theme.video_url =
+                "https://s3.amazonaws.com/download.filterisq.com/jar/newcall/other/other_${i + 1}.mp4"
+            DataBaseTool.getInstance().insertWords(theme)
+            otherTheme.add(theme)
+        }
+        //https://s3.amazonaws.com/download.filterisq.com/jar/newcall/scenery/scenery_1.mp4
+        //scenery
+        for (i in 0 until 20) {
+            val theme = ThemeContent()
+            theme.image_url =
+                "https://s3.amazonaws.com/download.filterisq.com/jar/newcall/scenery/scenery_${i + 1}.webp"
+            theme.video_url =
+                "https://s3.amazonaws.com/download.filterisq.com/jar/newcall/scenery/scenery_${i + 1}.mp4"
+            DataBaseTool.getInstance().insertWords(theme)
+            sceneryTheme.add(theme)
+        }
+        //https://s3.amazonaws.com/download.filterisq.com/jar/newcall/sport/sport_1.mp4
+        //sport
+        for (i in 0 until 13) {
+            val theme = ThemeContent()
+            theme.image_url =
+                "https://s3.amazonaws.com/download.filterisq.com/jar/newcall/sport/sport_${i + 1}.webp"
+            theme.video_url =
+                "https://s3.amazonaws.com/download.filterisq.com/jar/newcall/sport/sport_${i + 1}.mp4"
+            DataBaseTool.getInstance().insertWords(theme)
+            sportTheme.add(theme)
+        }
+
+        allTheme.add(animalTheme)
+        allTheme.add(danceTheme)
+        allTheme.add(electricTheme)
+        allTheme.add(heartTheme)
+        allTheme.add(otherTheme)
+        allTheme.add(sceneryTheme)
+        allTheme.add(sportTheme)
+    }
+
+    val nameList =
+        arrayListOf("Animal", "Dance", "Electric", "Heart", "Other", "Scenery", "Sport")
 }
