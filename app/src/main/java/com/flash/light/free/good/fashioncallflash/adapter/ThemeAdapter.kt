@@ -78,6 +78,7 @@ class ThemeAdapter(val list: MutableList<ThemeContent>) :
                 val intent = Intent(CallApplication.getContext(), ShowActivity::class.java)
                 intent.putExtra("position", position)
                 intent.putExtra("classify", classifyPosition)
+                intent.flags = Intent.FLAG_ACTIVITY_NEW_TASK
                 CallApplication.getContext().startActivity(intent)
             }
         }
