@@ -8,6 +8,7 @@ import android.content.Context;
 import android.graphics.PixelFormat;
 import android.graphics.Point;
 import android.os.Build;
+import android.text.TextUtils;
 import android.view.View;
 import android.view.WindowManager;
 import android.widget.ImageView;
@@ -188,12 +189,22 @@ public class LightalkWindow {
      * 显示锁屏
      */
     public void showlockScreen() {
+
+        String videoPath = SharedPreTool.Companion.getInstance().getString(SharedPreTool.SELECT_THEME);
+        if (TextUtils.isEmpty(videoPath)) {
+            return;
+        }
+
         if (!isShow) {
             if (!getShowBackPath()) return;
+            if (call_theme_back == null) return;
             isShow = true;
             call_theme_back.setViewSize(ScreenTool.Companion.getInstance().getAllScreen().x, ScreenTool.Companion.getInstance().getAllScreen().y);
 
             ThemeContent content = DataBaseTool.Companion.getInstance().find(SharedPreTool.Companion.getInstance().getString(SharedPreTool.SELECT_THEME));
+            if (content == null || TextUtils.isEmpty(content.getPath())) {
+                return;
+            }
             call_theme_back.show(content.getPath(), ScreenTool.Companion.getInstance().getAllScreen());
             wm.addView(mView, layoutParams);
 //            MainApplication.getInstance().isCallShow = true;
@@ -206,11 +217,23 @@ public class LightalkWindow {
      * 取消锁屏
      */
     public void hidelockScreen() {
-        if (isShow) {
-            isShow = false;
-            showAnim = false;
-            call_theme_back.stop();
-            wm.removeView(mView);
+        try {
+            String videoPath = SharedPreTool.Companion.getInstance().getString(SharedPreTool.SELECT_THEME);
+            if (TextUtils.isEmpty(videoPath)) {
+                return;
+            }
+
+            if (isShow) {
+                isShow = false;
+                showAnim = false;
+                if (call_theme_back != null)
+                    call_theme_back.stop();
+                if (wm != null && mView != null) {
+                    wm.removeView(mView);
+                }
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
         }
     }
 

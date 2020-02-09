@@ -29,6 +29,7 @@ class SharedPreTool private constructor() {
         const val SELECT_THEME = "SELECT_THEME"
         const val START_COUNT = "START_COUNT"
         const val CALL_THEME_SWITCH = "CALL_THEME_SWITCH"
+        const val CALL_FLASH = "CALL_FLASH"
     }
 
     private lateinit var sharedPre: SharedPreferences

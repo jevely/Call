@@ -15,6 +15,7 @@ class SettingActivity : AppCompatActivity(), View.OnClickListener {
 
     private lateinit var setting_back: ImageView
     private lateinit var setting_call_switch: SwitchCompat
+    private lateinit var setting_flash_switch: SwitchCompat
     private lateinit var setting_contact_re: RelativeLayout
     private lateinit var setting_about_re: RelativeLayout
 
@@ -23,12 +24,17 @@ class SettingActivity : AppCompatActivity(), View.OnClickListener {
         setContentView(R.layout.activity_setting)
         setting_back = findViewById(R.id.setting_back)
         setting_call_switch = findViewById(R.id.setting_call_switch)
+        setting_flash_switch = findViewById(R.id.setting_flash_switch)
         setting_contact_re = findViewById(R.id.setting_contact_re)
         setting_about_re = findViewById(R.id.setting_about_re)
 
         val call_theme_switch =
             SharedPreTool.getInstance().getBoolean(SharedPreTool.CALL_THEME_SWITCH)
         setting_call_switch.isChecked = call_theme_switch
+
+        val call_flash_switch =
+            SharedPreTool.getInstance().getBoolean(SharedPreTool.CALL_FLASH)
+        setting_flash_switch.isChecked = call_flash_switch
 
         setting_back.setOnClickListener(this)
         setting_contact_re.setOnClickListener(this)
@@ -53,6 +59,10 @@ class SettingActivity : AppCompatActivity(), View.OnClickListener {
     private fun initView() {
         setting_call_switch.setOnCheckedChangeListener { buttonView, isChecked ->
             SharedPreTool.getInstance().putBoolean(SharedPreTool.CALL_THEME_SWITCH, isChecked)
+        }
+
+        setting_flash_switch.setOnCheckedChangeListener { buttonView, isChecked ->
+            SharedPreTool.getInstance().putBoolean(SharedPreTool.CALL_FLASH, isChecked)
         }
     }
 }

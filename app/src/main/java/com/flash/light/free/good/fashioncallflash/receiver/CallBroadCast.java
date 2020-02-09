@@ -4,11 +4,9 @@ import android.app.Service;
 import android.content.BroadcastReceiver;
 import android.content.Context;
 import android.content.Intent;
-import android.os.Handler;
 import android.telephony.PhoneStateListener;
 import android.telephony.TelephonyManager;
 import android.text.TextUtils;
-import android.util.Log;
 
 import com.flash.light.free.good.fashioncallflash.tool.ContactTool;
 import com.flash.light.free.good.fashioncallflash.util.LightUtil;
@@ -52,15 +50,16 @@ public class CallBroadCast extends BroadcastReceiver {
                 case TelephonyManager.CALL_STATE_IDLE:
                     Logger.INSTANCE.d("挂断");
                     LightalkWindow.getInstence().hidelockScreen();
-                    LightUtil.getInstance().stopCallFlash(context);
+                    LightUtil.getInstance().cancel2();
                     break;
                 case TelephonyManager.CALL_STATE_OFFHOOK:
                     Logger.INSTANCE.d("接听");
                     break;
                 case TelephonyManager.CALL_STATE_RINGING:
+                    Logger.INSTANCE.d("来电");
                     LightalkWindow.getInstence().setData(ContactTool.getInstence().checkContact(incomingNumber), incomingNumber, style);
                     LightalkWindow.getInstence().showlockScreen();
-                    LightUtil.getInstance().callFlash(context);
+                    LightUtil.getInstance().switchMode("SOS");
                     break;
             }
         }
