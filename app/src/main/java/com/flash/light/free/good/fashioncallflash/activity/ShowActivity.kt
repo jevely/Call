@@ -22,8 +22,8 @@ import com.flash.light.free.good.fashioncallflash.tool.DataTool
 import com.flash.light.free.good.fashioncallflash.tool.NotificationTool
 import com.flash.light.free.good.fashioncallflash.util.*
 import com.flash.light.free.good.fashioncallflash.view.CallThemeBackView
-import com.flash.light.free.good.fashioncallflash.view.PhonePermissionDialog
-import com.flash.light.free.good.fashioncallflash.window.LightalkWindow
+import com.flash.light.free.good.fashioncallflash.view.OutPermissionDialog
+import com.flash.light.free.good.fashioncallflash.view.PermissionDialog
 
 class ShowActivity : BaseActivity() {
 
@@ -60,23 +60,79 @@ class ShowActivity : BaseActivity() {
         Glide
             .with(this)
             .load(themeContent.image_url)
-            .placeholder(R.mipmap.ic_launcher)
+            .placeholder(R.mipmap.defult_img)
             .override(getScreen().x, getScreen().y)
             .centerCrop()
             .into(show_iv)
 
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
-            requestPermission(
-                this@ShowActivity,
-                arrayOf(
+            if (!checkPermission(this, Permission.CALL) || !checkPermission(
+                    this,
+                    Permission.CONTACTS
+                )
+            ) {
+                val permissionDialog = PermissionDialog(
+                    this,
+                    checkPermission(this, Permission.CALL),
+                    checkPermission(this, Permission.CONTACTS)
+                )
+                permissionDialog.setCallBack(object : PermissionDialog.ClickCallBack {
+                    override fun click() {
+                        if (checkPermission(this@ShowActivity, Permission.CALL)) {
+                            requestPermission(
+                                this@ShowActivity,
+                                arrayOf(Permission.CONTACTS),
+                                SET_REQUEST
+                            )
+                            return
+                        }
+
+                        if (checkPermission(this@ShowActivity, Permission.CONTACTS)) {
+                            requestPermission(
+                                this@ShowActivity,
+                                arrayOf(Permission.CALL),
+                                SET_REQUEST
+                            )
+                            return
+                        }
+                        requestPermission(
+                            this@ShowActivity,
+                            arrayOf(
+//                            Permission.WRITE,
+//                            Permission.READ,
+                                Permission.CALL,
+//                                Permission.CALL_NUM,
+                                Permission.CONTACTS
+                            ),
+                            SET_REQUEST
+                        )
+                    }
+                })
+                permissionDialog.show()
+            } else {
+                requestPermission(
+                    this@ShowActivity,
+                    arrayOf(
 //                    Permission.WRITE,
 //                    Permission.READ,
-                    Permission.CALL,
-                    Permission.CALL_NUM,
-                    Permission.CONTACTS
-                ),
-                SET_REQUEST
-            )
+                        Permission.CALL,
+//                    Permission.CALL_NUM,
+                        Permission.CONTACTS
+                    ),
+                    SET_REQUEST
+                )
+            }
+//            requestPermission(
+//                this@ShowActivity,
+//                arrayOf(
+////                    Permission.WRITE,
+////                    Permission.READ,
+//                    Permission.CALL,
+//                    Permission.CALL_NUM,
+//                    Permission.CONTACTS
+//                ),
+//                SET_REQUEST
+//            )
         } else {
             startDownload()
         }
@@ -121,7 +177,7 @@ class ShowActivity : BaseActivity() {
 //            && permission.contains(Permission.READ)
 //            &&
             permission.contains(Permission.CALL)
-            && permission.contains(Permission.CALL_NUM)
+//            && permission.contains(Permission.CALL_NUM)
             && permission.contains(Permission.CONTACTS)
 
         ) {
@@ -139,7 +195,7 @@ class ShowActivity : BaseActivity() {
 //            || permission.contains(Permission.READ)
 //            ||
             permission.contains(Permission.CALL)
-            || permission.contains(Permission.CALL_NUM)
+//            || permission.contains(Permission.CALL_NUM)
             || permission.contains(Permission.CONTACTS)
         ) {
             Toast.makeText(
@@ -210,11 +266,11 @@ class ShowActivity : BaseActivity() {
                 )
             ) {
                 val permissionDialog =
-                    PhonePermissionDialog(
+                    OutPermissionDialog(
                         this,
-                        PhonePermissionDialog.FLOAT
+                        OutPermissionDialog.FLOAT
                     )
-                permissionDialog.setCallBack(object : PhonePermissionDialog.OnCallBack {
+                permissionDialog.setCallBack(object : OutPermissionDialog.OnCallBack {
 
                     override fun click() {
                         isRequestWindowPermission = true
@@ -225,15 +281,15 @@ class ShowActivity : BaseActivity() {
                     }
                 })
                 permissionDialog.show()
-                permissionDialog.setBtClick(PhonePermissionDialog.FLOAT)
-                permissionDialog.setBtUnclick(PhonePermissionDialog.NOTIFY)
+                permissionDialog.setBtClick(OutPermissionDialog.FLOAT)
+                permissionDialog.setBtUnclick(OutPermissionDialog.NOTIFY)
             } else {
                 val permissionDialog =
-                    PhonePermissionDialog(
+                    OutPermissionDialog(
                         this,
-                        PhonePermissionDialog.ALL
+                        OutPermissionDialog.ALL
                     )
-                permissionDialog.setCallBack(object : PhonePermissionDialog.OnCallBack {
+                permissionDialog.setCallBack(object : OutPermissionDialog.OnCallBack {
 
                     override fun click() {
                         isRequestWindowPermission = true
@@ -244,8 +300,8 @@ class ShowActivity : BaseActivity() {
                     }
                 })
                 permissionDialog.show()
-                permissionDialog.setBtClick(PhonePermissionDialog.FLOAT)
-                permissionDialog.setBtUnclick(PhonePermissionDialog.NOTIFY)
+                permissionDialog.setBtClick(OutPermissionDialog.FLOAT)
+                permissionDialog.setBtUnclick(OutPermissionDialog.NOTIFY)
             }
             return
         }
@@ -255,11 +311,11 @@ class ShowActivity : BaseActivity() {
             )
         ) {
             val permissionDialog =
-                PhonePermissionDialog(
+                OutPermissionDialog(
                     this,
-                    PhonePermissionDialog.NOTIFY
+                    OutPermissionDialog.NOTIFY
                 )
-            permissionDialog.setCallBack(object : PhonePermissionDialog.OnCallBack {
+            permissionDialog.setCallBack(object : OutPermissionDialog.OnCallBack {
 
                 override fun click() {
                     isRequestWindowPermission = true
@@ -270,8 +326,8 @@ class ShowActivity : BaseActivity() {
                 }
             })
             permissionDialog.show()
-            permissionDialog.setBtClick(PhonePermissionDialog.NOTIFY)
-            permissionDialog.setBtUnclick(PhonePermissionDialog.FLOAT)
+            permissionDialog.setBtClick(OutPermissionDialog.NOTIFY)
+            permissionDialog.setBtUnclick(OutPermissionDialog.FLOAT)
             return
         }
 
@@ -280,14 +336,6 @@ class ShowActivity : BaseActivity() {
         call_bt.text = resources.getString(R.string.theme_select)
         Toast.makeText(this@ShowActivity, "success", Toast.LENGTH_SHORT).show()
         SharedPreTool.getInstance().putBoolean(SharedPreTool.CALL_THEME_SWITCH, true)
-
-//        LightalkWindow.getInstence().initView(this, true)
-//                LightalkWindow.getInstence().setData(
-//                    null,
-//                    "123",
-//                    1
-//                )
-//                LightalkWindow.getInstence().showlockScreen()
     }
 
     override fun onResume() {

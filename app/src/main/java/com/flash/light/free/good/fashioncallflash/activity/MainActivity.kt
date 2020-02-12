@@ -46,23 +46,23 @@ class MainActivity : BaseActivity(), View.OnClickListener {
 
         val count = SharedPreTool.getInstance().getInt(SharedPreTool.START_COUNT)
         if (count == 0) {
-            val permissionDialog = PermissionDialog(this)
-            permissionDialog.setCallBack(object : PermissionDialog.ClickCallBack {
-                override fun click() {
-                    requestPermission(
-                        this@MainActivity,
-                        arrayOf(
-//                            Permission.WRITE,
-//                            Permission.READ,
-                            Permission.CALL,
-                            Permission.CALL_NUM,
-                            Permission.CONTACTS
-                        ),
-                        SET_REQUEST
-                    )
-                }
-            })
-            permissionDialog.show()
+//            val permissionDialog = PermissionDialog(this)
+//            permissionDialog.setCallBack(object : PermissionDialog.ClickCallBack {
+//                override fun click() {
+//                    requestPermission(
+//                        this@MainActivity,
+//                        arrayOf(
+////                            Permission.WRITE,
+////                            Permission.READ,
+//                            Permission.CALL,
+//                            Permission.CALL_NUM,
+//                            Permission.CONTACTS
+//                        ),
+//                        SET_REQUEST
+//                    )
+//                }
+//            })
+//            permissionDialog.show()
 
         } else if (count >= 1) {
             setWhite(this)

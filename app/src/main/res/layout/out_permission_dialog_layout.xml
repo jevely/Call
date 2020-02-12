@@ -20,10 +20,10 @@
             android:paddingRight="24dp"
             android:text="@string/permission_tip"
             android:textColor="#000000"
-            android:textSize="20sp"/>
+            android:textSize="20sp" />
 
         <RelativeLayout
-            android:id="@+id/permission_call_re"
+            android:id="@+id/permission_screen_re"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="17dp">
@@ -34,35 +34,45 @@
                 android:layout_height="28dp"
                 android:layout_centerVertical="true"
                 android:layout_marginLeft="24dp"
-                android:src="@mipmap/permission_call" />
+                android:src="@mipmap/permission_call"
+                android:visibility="gone" />
 
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_centerVertical="true"
-                android:layout_marginLeft="7dp"
+                android:layout_marginLeft="24dp"
                 android:layout_toRightOf="@+id/permission_icon_1"
                 android:orientation="vertical">
 
                 <TextView
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:text="Phone State"
+                    android:text="@string/permission_dialog_title1"
                     android:textColor="#000000"
                     android:textSize="16sp" />
 
                 <TextView
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:text="For get phone calling state"
+                    android:text="@string/permission_dialog_content1"
                     android:textColor="#999"
                     android:textSize="14sp" />
             </LinearLayout>
 
+            <ImageView
+                android:id="@+id/permission_float_bt"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentEnd="true"
+                android:layout_centerVertical="true"
+                android:layout_marginEnd="24dp"
+                android:src="@mipmap/out_yes" />
+
         </RelativeLayout>
 
         <RelativeLayout
-            android:id="@+id/permission_contacts_re"
+            android:id="@+id/permission_call_re"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="17dp">
@@ -73,82 +83,54 @@
                 android:layout_height="28dp"
                 android:layout_centerVertical="true"
                 android:layout_marginLeft="24dp"
-                android:src="@mipmap/permission_contacts" />
+                android:src="@mipmap/permission_contacts"
+                android:visibility="gone" />
 
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_centerVertical="true"
-                android:layout_marginLeft="7dp"
+                android:layout_marginLeft="24dp"
                 android:layout_toRightOf="@+id/permission_icon_4"
                 android:orientation="vertical">
 
                 <TextView
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:text="Read Contacts"
+                    android:text="@string/permission_dialog_title2"
                     android:textColor="#000000"
                     android:textSize="16sp" />
 
                 <TextView
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:text="For read phone contacts"
+                    android:text="@string/permission_dialog_content2"
                     android:textColor="#999"
                     android:textSize="14sp" />
             </LinearLayout>
-
-        </RelativeLayout>
-
-        <RelativeLayout
-            android:id="@+id/permission_record_re"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="17dp">
 
             <ImageView
-                android:id="@+id/permission_icon_2"
-                android:layout_width="28dp"
-                android:layout_height="28dp"
-                android:layout_centerVertical="true"
-                android:layout_marginLeft="24dp"
-                android:src="@mipmap/permission_recode" />
-
-            <LinearLayout
-                android:layout_width="match_parent"
+                android:id="@+id/permission_notify_bt"
+                android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:layout_alignParentEnd="true"
                 android:layout_centerVertical="true"
-                android:layout_marginLeft="7dp"
-                android:layout_toRightOf="@+id/permission_icon_2"
-                android:orientation="vertical">
+                android:layout_marginEnd="24dp"
+                android:src="@mipmap/out_yes" />
 
-                <TextView
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:text="Phone Record"
-                    android:textColor="#000000"
-                    android:textSize="16sp" />
-
-                <TextView
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:text="For get phone calling number"
-                    android:textColor="#999"
-                    android:textSize="14sp" />
-            </LinearLayout>
 
         </RelativeLayout>
 
         <TextView
-            android:id="@+id/white_yes"
+            android:id="@+id/permission_close"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="end"
             android:layout_marginTop="25dp"
             android:layout_marginEnd="18dp"
             android:layout_marginBottom="23dp"
-            android:text="SETTINGS"
-            android:textColor="#0884FF"
+            android:text="DENY"
+            android:textColor="#9B9B9B"
             android:textSize="14sp" />
     </LinearLayout>
 

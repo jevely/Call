@@ -17,17 +17,45 @@
             android:id="@+id/ass_desc"
             android:layout_width="253dp"
             android:layout_height="wrap_content"
-            android:background="@mipmap/tip_content"
-            android:fontFamily="sans-serif-light"
-            android:gravity="center"
+            android:background="@mipmap/out_tip_back"
+            android:gravity="center_vertical"
+            android:paddingStart="24dp"
+            android:paddingEnd="24dp"
             android:text="@string/tip_content"
-            android:textColor="#fff"
-            android:textSize="16sp" />
+            android:textColor="#FFFFFF"
+            android:textSize="14sp" />
 
-        <ImageView
-            android:layout_width="253dp"
-            android:layout_height="wrap_content"
-            android:src="@mipmap/tip_title" />
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="80dp"
+            android:background="#fff"
+            android:gravity="center_vertical"
+            android:orientation="horizontal">
+
+            <ImageView
+                android:layout_width="32dp"
+                android:layout_height="32dp"
+                android:layout_marginStart="24dp"
+                android:src="@mipmap/ic_launcher" />
+
+            <TextView
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="8dp"
+                android:layout_weight="1"
+                android:text="@string/app_name"
+                android:textColor="#de000000"
+                android:textSize="14sp" />
+
+            <androidx.appcompat.widget.SwitchCompat
+                style="style"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginEnd="20dp"
+                android:checked="true"
+                android:clickable="false" />
+
+        </LinearLayout>
 
     </LinearLayout>
 

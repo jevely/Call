@@ -21,7 +21,7 @@
     <string name="dialog_permission_fail">Open access failed</string>
 
     <string name="white_content">Please in white to let app live</string>
-    <string name="permission_tip">Authorize the following permissions,you can get cool call themes!</string>
+    <string name="permission_tip">Permissions</string>
     <string name="white_tip">Authorize the following permissions,app will be more stable!</string>
 
 </resources>

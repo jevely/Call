@@ -47,7 +47,7 @@ class ThemeAdapter(val list: MutableList<ThemeContent>) :
             Glide
                 .with(CallApplication.getContext())
                 .load(content.image_url)
-                .placeholder(R.mipmap.ic_launcher)
+                .placeholder(R.mipmap.defult_img)
                 .override((getScreen().x / 2.0F).toInt(), (getScreen().y / 2.0F).toInt())
                 .centerCrop()
                 .addListener(object : RequestListener<Drawable> {

@@ -2,11 +2,12 @@ package com.flash.light.free.good.fashioncallflash.view;
 
 import android.app.Activity;
 import android.app.Dialog;
+import android.content.Context;
 import android.os.Bundle;
 import android.view.View;
 import android.view.WindowManager;
 import android.widget.ImageView;
-import android.widget.LinearLayout;
+import android.widget.RelativeLayout;
 import android.widget.TextView;
 
 import com.flash.light.free.good.fashioncallflash.R;
@@ -15,22 +16,22 @@ import com.flash.light.free.good.fashioncallflash.util.DeviceUtils;
 import com.flash.light.free.good.fashioncallflash.util.UtilsKt;
 
 /**
- * 权限申请弹框
+ *
  */
-public class PhonePermissionDialog extends Dialog implements View.OnClickListener {
+public class OutPermissionDialog extends Dialog implements View.OnClickListener {
 
-    private Activity context;
+    private TextView permission_close;
+    private RelativeLayout permission_screen_re, permission_call_re;
+    private ImageView permission_float_bt, permission_notify_bt;
 
     public static int FLOAT = 1;
     public static int NOTIFY = 2;
     public static int ALL = 3;
     private int state;
 
-    private LinearLayout permission_float_ll, permission_notify_ll;
-    private TextView permission_float_bt, permission_notify_bt;
-    private ImageView permission_close;
+    private Activity context;
 
-    public PhonePermissionDialog(Activity context, int state) {
+    public OutPermissionDialog(Activity context, int state) {
         super(context, R.style.dialog_screen);
         this.context = context;
         this.state = state;
@@ -39,7 +40,7 @@ public class PhonePermissionDialog extends Dialog implements View.OnClickListene
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.phone_permission_dialog_layout);
+        setContentView(R.layout.out_permission_dialog_layout);
 
         WindowManager.LayoutParams lp = getWindow().getAttributes();
         lp.width = UtilsKt.getScreen().x;
@@ -49,39 +50,39 @@ public class PhonePermissionDialog extends Dialog implements View.OnClickListene
         setCanceledOnTouchOutside(false);
 
         permission_close = findViewById(R.id.permission_close);
+        permission_screen_re = findViewById(R.id.permission_screen_re);
+        permission_call_re = findViewById(R.id.permission_call_re);
         permission_float_bt = findViewById(R.id.permission_float_bt);
         permission_notify_bt = findViewById(R.id.permission_notify_bt);
-        permission_float_ll = findViewById(R.id.permission_float_ll);
-        permission_notify_ll = findViewById(R.id.permission_notify_ll);
-
-        permission_float_bt.setOnClickListener(this);
-        permission_notify_bt.setOnClickListener(this);
-        permission_close.setOnClickListener(this);
 
         if (state == FLOAT) {
-            permission_float_ll.setVisibility(View.VISIBLE);
-            permission_float_ll.setBackgroundResource(R.drawable.permisstion_tip_bottom);
-            permission_notify_ll.setVisibility(View.GONE);
+            permission_screen_re.setVisibility(View.VISIBLE);
+            permission_call_re.setVisibility(View.GONE);
         } else if (state == NOTIFY) {
-            permission_float_ll.setVisibility(View.GONE);
-            permission_notify_ll.setVisibility(View.VISIBLE);
+            permission_screen_re.setVisibility(View.GONE);
+            permission_call_re.setVisibility(View.VISIBLE);
         } else {
-            permission_float_ll.setVisibility(View.VISIBLE);
-            permission_notify_ll.setVisibility(View.VISIBLE);
+            permission_screen_re.setVisibility(View.VISIBLE);
+            permission_call_re.setVisibility(View.VISIBLE);
         }
 
+        permission_close.setOnClickListener(this);
+        permission_float_bt.setOnClickListener(this);
+        permission_notify_bt.setOnClickListener(this);
+        permission_screen_re.setOnClickListener(this);
+        permission_call_re.setOnClickListener(this);
     }
 
     public void setBtUnclick(int state) {
         if (FLOAT == state) {
-            permission_float_bt.setBackgroundResource(R.drawable.permission_tip_bt_unback);
+            permission_float_bt.setBackgroundResource(R.mipmap.out_no);
             permission_float_bt.setClickable(false);
         } else if (NOTIFY == state) {
-            permission_notify_bt.setBackgroundResource(R.drawable.permission_tip_bt_unback);
+            permission_notify_bt.setBackgroundResource(R.mipmap.out_no);
             permission_notify_bt.setClickable(false);
         } else {
-            permission_float_bt.setBackgroundResource(R.drawable.permission_tip_bt_unback);
-            permission_notify_bt.setBackgroundResource(R.drawable.permission_tip_bt_unback);
+            permission_float_bt.setBackgroundResource(R.mipmap.out_no);
+            permission_notify_bt.setBackgroundResource(R.mipmap.out_no);
             permission_float_bt.setClickable(false);
             permission_notify_bt.setClickable(false);
         }
@@ -89,14 +90,14 @@ public class PhonePermissionDialog extends Dialog implements View.OnClickListene
 
     public void setBtClick(int state) {
         if (FLOAT == state) {
-            permission_float_bt.setBackgroundResource(R.drawable.permission_tip_bt_back);
+            permission_float_bt.setBackgroundResource(R.mipmap.out_yes);
             permission_float_bt.setClickable(true);
         } else if (NOTIFY == state) {
-            permission_notify_bt.setBackgroundResource(R.drawable.permission_tip_bt_back);
+            permission_notify_bt.setBackgroundResource(R.mipmap.out_yes);
             permission_notify_bt.setClickable(true);
         } else {
-            permission_float_bt.setBackgroundResource(R.drawable.permission_tip_bt_back);
-            permission_notify_bt.setBackgroundResource(R.drawable.permission_tip_bt_back);
+            permission_float_bt.setBackgroundResource(R.mipmap.out_yes);
+            permission_notify_bt.setBackgroundResource(R.mipmap.out_yes);
             permission_float_bt.setClickable(true);
             permission_notify_bt.setClickable(true);
         }
@@ -108,9 +109,9 @@ public class PhonePermissionDialog extends Dialog implements View.OnClickListene
         if (callBack != null) callBack.cancel();
     }
 
-    private OnCallBack callBack;
+    private OutPermissionDialog.OnCallBack callBack;
 
-    public PhonePermissionDialog setCallBack(OnCallBack callBack) {
+    public OutPermissionDialog setCallBack(OutPermissionDialog.OnCallBack callBack) {
         this.callBack = callBack;
         return this;
     }
@@ -119,11 +120,13 @@ public class PhonePermissionDialog extends Dialog implements View.OnClickListene
     public void onClick(View v) {
         switch (v.getId()) {
             case R.id.permission_float_bt:
+            case R.id.permission_screen_re:
                 DeviceUtils.openFloatWindowPermission(context);
                 if (callBack != null) callBack.click();
                 dismiss();
                 break;
             case R.id.permission_notify_bt:
+            case R.id.permission_call_re:
                 NotificationTool.goToNotification(context);
                 if (callBack != null) callBack.click();
                 dismiss();

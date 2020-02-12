@@ -20,7 +20,7 @@ open class BaseActivity : AppCompatActivity() {
      * @param permission 权限
      * @return true为有权限   false为没有权限
      */
-    fun checkPermission(context: Context, permission: String): Boolean? {
+    fun checkPermission(context: Context, permission: String): Boolean {
         val selfPermission = ContextCompat.checkSelfPermission(context, permission)
         return selfPermission != PackageManager.PERMISSION_DENIED
     }

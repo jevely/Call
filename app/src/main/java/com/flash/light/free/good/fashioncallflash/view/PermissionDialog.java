@@ -8,6 +8,7 @@ import android.view.View;
 import android.view.WindowManager;
 import android.widget.Button;
 import android.widget.RelativeLayout;
+import android.widget.TextView;
 
 import com.flash.light.free.good.fashioncallflash.R;
 import com.flash.light.free.good.fashioncallflash.util.UtilsKt;
@@ -17,12 +18,15 @@ import com.flash.light.free.good.fashioncallflash.util.UtilsKt;
  */
 public class PermissionDialog extends Dialog {
 
-    private Button white_yes;
-    private RelativeLayout permission_record_re;
+    private TextView white_yes;
+    private RelativeLayout permission_record_re, permission_call_re, permission_contacts_re;
+    private boolean call, contacts;
 //    private View permission_record_line;
 
-    public PermissionDialog(Context context) {
+    public PermissionDialog(Context context, boolean call, boolean contacts) {
         super(context, R.style.dialog_screen);
+        this.call = call;
+        this.contacts = contacts;
     }
 
     @Override
@@ -39,11 +43,21 @@ public class PermissionDialog extends Dialog {
 
         white_yes = findViewById(R.id.white_yes);
         permission_record_re = findViewById(R.id.permission_record_re);
+        permission_call_re = findViewById(R.id.permission_call_re);
+        permission_contacts_re = findViewById(R.id.permission_contacts_re);
 //        permission_record_line = findViewById(R.id.permission_record_line);
 
-        if (Build.VERSION.SDK_INT < Build.VERSION_CODES.P) {
+//        if (Build.VERSION.SDK_INT < Build.VERSION_CODES.P) {
             permission_record_re.setVisibility(View.GONE);
 //            permission_record_line.setVisibility(View.GONE);
+//        }
+
+        if (call) {
+            permission_call_re.setVisibility(View.GONE);
+        }
+
+        if (contacts) {
+            permission_contacts_re.setVisibility(View.GONE);
         }
 
         white_yes.setOnClickListener(new View.OnClickListener() {
