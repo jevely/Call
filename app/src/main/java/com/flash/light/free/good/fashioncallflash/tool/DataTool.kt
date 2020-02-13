@@ -64,6 +64,17 @@ class DataTool {
     val sportTheme = mutableListOf<ThemeContent>()
     val allTheme = mutableListOf<MutableList<ThemeContent>>()
     fun initDataNew() {
+        //https://s3.amazonaws.com/download.filterisq.com/jar/newcall/scenery/scenery_1.mp4
+        //scenery
+        for (i in 0 until 20) {
+            val theme = ThemeContent()
+            theme.image_url =
+                "https://s3.amazonaws.com/download.filterisq.com/jar/newcall/scenery/scenery_${i + 1}.webp"
+            theme.video_url =
+                "https://s3.amazonaws.com/download.filterisq.com/jar/newcall/scenery/scenery_${i + 1}.mp4"
+            DataBaseTool.getInstance().insertWords(theme)
+            sceneryTheme.add(theme)
+        }
         // https://s3.amazonaws.com/download.filterisq.com/jar/newcall/animal/animal_1.mp4
         //animal
         for (i in 0 until 7) {
@@ -119,17 +130,6 @@ class DataTool {
             DataBaseTool.getInstance().insertWords(theme)
             otherTheme.add(theme)
         }
-        //https://s3.amazonaws.com/download.filterisq.com/jar/newcall/scenery/scenery_1.mp4
-        //scenery
-        for (i in 0 until 20) {
-            val theme = ThemeContent()
-            theme.image_url =
-                "https://s3.amazonaws.com/download.filterisq.com/jar/newcall/scenery/scenery_${i + 1}.webp"
-            theme.video_url =
-                "https://s3.amazonaws.com/download.filterisq.com/jar/newcall/scenery/scenery_${i + 1}.mp4"
-            DataBaseTool.getInstance().insertWords(theme)
-            sceneryTheme.add(theme)
-        }
         //https://s3.amazonaws.com/download.filterisq.com/jar/newcall/sport/sport_1.mp4
         //sport
         for (i in 0 until 13) {
@@ -142,15 +142,15 @@ class DataTool {
             sportTheme.add(theme)
         }
 
+        allTheme.add(sceneryTheme)
         allTheme.add(animalTheme)
         allTheme.add(danceTheme)
         allTheme.add(electricTheme)
         allTheme.add(heartTheme)
         allTheme.add(otherTheme)
-        allTheme.add(sceneryTheme)
         allTheme.add(sportTheme)
     }
 
     val nameList =
-        arrayListOf("Animal", "Dance", "Electric", "Heart", "Other", "Scenery", "Sport")
+        arrayListOf("Scenery", "Animal", "Dance", "Electric", "Heart", "Other", "Sport")
 }
