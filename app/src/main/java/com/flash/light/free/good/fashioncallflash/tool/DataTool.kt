@@ -88,7 +88,7 @@ class DataTool {
         }
         //https://s3.amazonaws.com/download.filterisq.com/jar/newcall/dance/dance_1.mp4
         //dance
-        for (i in 0 until 24) {
+        for (i in 0 until 27) {
             val theme = ThemeContent()
             theme.image_url =
                 "https://s3.amazonaws.com/download.filterisq.com/jar/newcall/dance/dance_${i + 1}.png"
@@ -99,7 +99,7 @@ class DataTool {
         }
         //https://s3.amazonaws.com/download.filterisq.com/jar/newcall/electric/electric_1.mp4
         //electric
-        for (i in 0 until 15) {
+        for (i in 0 until 16) {
             val theme = ThemeContent()
             theme.image_url =
                 "https://s3.amazonaws.com/download.filterisq.com/jar/newcall/electric/electric_${i + 1}.webp"
@@ -121,14 +121,24 @@ class DataTool {
         }
         //https://s3.amazonaws.com/download.filterisq.com/jar/newcall/other/other_1.mp4
         //other
-        for (i in 0 until 21) {
-            val theme = ThemeContent()
-            theme.image_url =
-                "https://s3.amazonaws.com/download.filterisq.com/jar/newcall/other/other_${i + 1}.webp"
-            theme.video_url =
-                "https://s3.amazonaws.com/download.filterisq.com/jar/newcall/other/other_${i + 1}.mp4"
-            DataBaseTool.getInstance().insertWords(theme)
-            otherTheme.add(theme)
+        for (i in 0 until 25) {
+            if (i < 22) {
+                val theme = ThemeContent()
+                theme.image_url =
+                    "https://s3.amazonaws.com/download.filterisq.com/jar/newcall/other/other_${i + 1}.webp"
+                theme.video_url =
+                    "https://s3.amazonaws.com/download.filterisq.com/jar/newcall/other/other_${i + 1}.mp4"
+                DataBaseTool.getInstance().insertWords(theme)
+                otherTheme.add(theme)
+            } else {
+                val theme = ThemeContent()
+                theme.image_url =
+                    "https://s3.amazonaws.com/download.filterisq.com/jar/newcall/other/other_${i + 1}.png"
+                theme.video_url =
+                    "https://s3.amazonaws.com/download.filterisq.com/jar/newcall/other/other_${i + 1}.mp4"
+                DataBaseTool.getInstance().insertWords(theme)
+                otherTheme.add(theme)
+            }
         }
         //https://s3.amazonaws.com/download.filterisq.com/jar/newcall/sport/sport_1.mp4
         //sport
