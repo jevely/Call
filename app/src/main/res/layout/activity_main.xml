@@ -4,7 +4,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    android:background="#000"
+    android:background="@color/activity_back"
     android:orientation="vertical"
     tools:context=".activity.MainActivity">
 
@@ -18,7 +18,7 @@
             android:layout_centerVertical="true"
             android:layout_marginStart="16dp"
             android:text="@string/app_name"
-            android:textColor="#fff"
+            android:textColor="@color/nomal_text"
             android:textSize="18sp"
             android:textStyle="bold" />
 

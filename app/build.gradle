@@ -60,7 +60,7 @@ dependencies {
 
     implementation 'com.google.firebase:firebase-ads:18.3.0'
 
-    implementation 'com.facebook.android:audience-network-sdk:5.6.0'
+    implementation 'com.facebook.android:audience-network-sdk:5.5.0'
 
     //adx
     implementation 'com.google.android.gms:play-services-ads:18.3.0'
@@ -69,7 +69,8 @@ dependencies {
     implementation 'com.applovin:applovin-sdk:9.10.3'
 
     implementation 'com.facebook.android:facebook-android-sdk:5.12.1'
-    implementation 'com.google.android.material:material:1.0.0'
+
+    implementation 'com.google.android.material:material:1.1.0'
 }
 
 repositories {

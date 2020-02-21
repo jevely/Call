@@ -14,7 +14,7 @@
 
         <item name="android:windowTranslucentStatus">true</item>
 
-        <item name="android:windowBackground">#000</item>
+        <item name="android:windowBackground">@color/activity_back</item>
 
     </style>
 </resources>

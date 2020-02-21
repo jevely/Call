@@ -26,7 +26,7 @@ import com.google.android.material.tabs.TabLayout
 
 class MainActivity : BaseActivity(), View.OnClickListener {
 
-//    private lateinit var main_recyclerview: RecyclerView
+    //    private lateinit var main_recyclerview: RecyclerView
 //    private lateinit var adapter: MainAdapter
     private lateinit var main_setting: ImageView
 
@@ -45,26 +45,7 @@ class MainActivity : BaseActivity(), View.OnClickListener {
         init()
 
         val count = SharedPreTool.getInstance().getInt(SharedPreTool.START_COUNT)
-        if (count == 0) {
-//            val permissionDialog = PermissionDialog(this)
-//            permissionDialog.setCallBack(object : PermissionDialog.ClickCallBack {
-//                override fun click() {
-//                    requestPermission(
-//                        this@MainActivity,
-//                        arrayOf(
-////                            Permission.WRITE,
-////                            Permission.READ,
-//                            Permission.CALL,
-//                            Permission.CALL_NUM,
-//                            Permission.CONTACTS
-//                        ),
-//                        SET_REQUEST
-//                    )
-//                }
-//            })
-//            permissionDialog.show()
-
-        } else if (count >= 1) {
+        if (count >= 1) {
             setWhite(this)
         }
         SharedPreTool.getInstance().putInt(SharedPreTool.START_COUNT, count + 1)
@@ -82,19 +63,16 @@ class MainActivity : BaseActivity(), View.OnClickListener {
 
         main_tab.addOnTabSelectedListener(object : TabLayout.OnTabSelectedListener {
             override fun onTabReselected(p0: TabLayout.Tab) {
-                Log.d("LJW", "onTabReselected")
                 main_viewpager.setCurrentItem(p0.position)
             }
 
             override fun onTabUnselected(p0: TabLayout.Tab) {
-                Log.d("LJW", "onTabUnselected")
                 val item_view = p0.customView
                 val textView = item_view?.findViewById<TextView>(R.id.teb_textview)
                 textView?.setTextColor(resources.getColor(R.color.tab_unselect))
             }
 
             override fun onTabSelected(p0: TabLayout.Tab) {
-                Log.d("LJW", "onTabSelected:${p0.position}")
                 main_viewpager.setCurrentItem(p0.position)
 
                 val item_view = p0.customView

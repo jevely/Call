@@ -2,12 +2,15 @@
 <resources>
     <color name="colorPrimary">#008577</color>
     <color name="colorPrimaryDark">#00574B</color>
-    <color name="colorAccent">#57CD78</color>
+    <color name="colorAccent">#666666</color>
     <color name="translucent_background">#af000000</color>
     <color name="line">#66666666</color>
     <color name="line2">#77494949</color>
     <color name="switchback">#929292</color>
 
-    <color name="tab_unselect">#717171</color>
-    <color name="tab_select">#ECECEC</color>
+    <color name="tab_unselect">#ADADAD</color>
+    <color name="tab_select">#666666</color>
+
+    <color name="activity_back">#ffffff</color>
+    <color name="nomal_text">#666666</color>
 </resources>
