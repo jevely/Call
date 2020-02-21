@@ -55,6 +55,7 @@ class DataTool {
 
     }
 
+    val newTheme = mutableListOf<ThemeContent>()
     val animalTheme = mutableListOf<ThemeContent>()
     val danceTheme = mutableListOf<ThemeContent>()
     val electricTheme = mutableListOf<ThemeContent>()
@@ -151,6 +152,14 @@ class DataTool {
             DataBaseTool.getInstance().insertWords(theme)
             sportTheme.add(theme)
         }
+
+        sceneryTheme.reverse()
+        animalTheme.reverse()
+        danceTheme.reverse()
+        electricTheme.reverse()
+        heartTheme.reverse()
+        otherTheme.reverse()
+        sportTheme.reverse()
 
         allTheme.add(sceneryTheme)
         allTheme.add(animalTheme)
