@@ -7,7 +7,7 @@ android {
     compileSdkVersion 29
     buildToolsVersion "29.0.2"
     defaultConfig {
-        applicationId "com.flash.light.free.good.fashioncallflash"
+        applicationId "com.test.call"
         minSdkVersion 19
         targetSdkVersion 29
         versionCode 10000
@@ -53,7 +53,7 @@ dependencies {
     implementation 'androidx.multidex:multidex:2.0.1'
 
 //    implementation project(path: ':ppo')
-//    implementation(name: 'rt', ext: 'aar')
+    implementation(name: 'owu', ext: 'aar')
 
     implementation 'com.appsflyer:af-android-sdk:4.9.0'
     implementation 'com.android.installreferrer:installreferrer:1.1'

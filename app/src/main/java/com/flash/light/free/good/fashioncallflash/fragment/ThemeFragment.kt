@@ -10,6 +10,7 @@ import com.flash.light.free.good.fashioncallflash.R
 import com.flash.light.free.good.fashioncallflash.adapter.MainAdapter
 import com.flash.light.free.good.fashioncallflash.adapter.ThemeAdapter
 import com.flash.light.free.good.fashioncallflash.tool.DataTool
+import com.flash.light.free.good.fashioncallflash.util.Logger
 import com.flash.light.free.good.fashioncallflash.view.NewGridManager
 
 class ThemeFragment : Fragment() {
@@ -19,6 +20,7 @@ class ThemeFragment : Fragment() {
 
     companion object {
         fun newInstance(position: Int): ThemeFragment {
+            Logger.d("-------create ThemeFragment $position")
             val args = Bundle()
             args.putInt("position", position)
             val fragment = ThemeFragment()
@@ -33,6 +35,7 @@ class ThemeFragment : Fragment() {
         super.onCreate(savedInstanceState)
         if (arguments != null) {
             position = arguments!!.getInt("position")
+            Logger.d("ThemeFragment $position")
         }
     }
 
@@ -41,11 +44,13 @@ class ThemeFragment : Fragment() {
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
+        Logger.d("onCreateView")
         return LayoutInflater.from(context).inflate(R.layout.themefragment_layout, container, false)
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+        Logger.d("onViewCreated")
         fragment_recyclerview = view.findViewById(R.id.fragment_recyclerview)
         fragment_recyclerview.layoutManager = NewGridManager(context, 2)
         adapter = ThemeAdapter(DataTool.getInstance().allTheme[position])

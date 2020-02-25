@@ -1,0 +1,143 @@
+<?xml version="1.0" encoding="utf-8"?>
+<com.facebook.ads.NativeAdLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/iuw_moni_native_ad_container"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content">
+
+    <RelativeLayout
+        android:id="@+id/iuw_moni_nl_bf_parent"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:padding="4dp"
+        android:orientation="vertical">
+
+        <LinearLayout
+            android:id="@+id/iuw_moni_nl_fb_title_ll"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="4dp"
+            android:gravity="center_vertical"
+            android:orientation="horizontal">
+
+            <com.facebook.ads.MediaView
+                android:id="@+id/iuw_moni_native_ad_icon"
+                android:layout_width="25dp"
+                android:layout_height="25dp"
+                android:layout_below="@+id/iuw_moni_nl_fb_title_ll"
+                android:layout_marginStart="8dp" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="8dp"
+                android:padding="4dp"
+                android:text="Ad"
+                android:textColor="#99ACACAC"
+                android:textSize="12sp"
+                android:textStyle="bold" />
+
+            <LinearLayout
+                android:id="@+id/iuw_moni_ad_choices_container"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginEnd="8dp"
+                android:gravity="end"
+                android:orientation="horizontal" />
+        </LinearLayout>
+
+        <TextView
+            android:id="@+id/iuw_moni_native_ad_title"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/iuw_moni_nl_fb_title_ll"
+            android:layout_marginStart="4dp"
+            android:layout_marginTop="4dp"
+            android:layout_marginEnd="4dp"
+            android:ellipsize="end"
+            android:maxLines="2"
+            android:textColor="#666"
+            android:textSize="10sp" />
+
+        <TextView
+            android:id="@+id/iuw_moni_native_ad_translation"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/iuw_moni_native_ad_title"
+            android:layout_marginStart="4dp"
+            android:layout_marginEnd="4dp"
+            android:ellipsize="end"
+            android:maxLines="1"
+            android:textColor="#666"
+            android:textSize="10sp"
+            android:textStyle="bold" />
+
+        <FrameLayout
+            android:id="@+id/iuw_moni_nl_bf_fl"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/iuw_moni_native_ad_translation"
+            android:layout_marginTop="4dp">
+
+            <com.facebook.ads.MediaView
+                android:id="@+id/iuw_moni_native_ad_media"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="#3A5EC9"
+                android:gravity="center" />
+
+            <TextView
+                android:id="@+id/iuw_moni_adsocial"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="bottom"
+                android:background="#44000000"
+                android:ellipsize="end"
+                android:maxLines="1"
+                android:paddingStart="4dp"
+                android:paddingEnd="4dp"
+                android:textColor="#fff"
+                android:textSize="12sp" />
+        </FrameLayout>
+
+
+        <TextView
+            android:id="@+id/iuw_moni_nl_fb_content1"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/iuw_moni_nl_bf_fl"
+            android:layout_marginStart="4dp"
+            android:layout_marginTop="2dp"
+            android:layout_marginEnd="4dp"
+            android:ellipsize="end"
+            android:maxLines="1"
+            android:textColor="#666"
+            android:textSize="10sp" />
+
+        <TextView
+            android:id="@+id/iuw_moni_nl_fb_content2"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/iuw_moni_nl_fb_content1"
+            android:layout_marginStart="4dp"
+            android:layout_marginTop="2dp"
+            android:layout_marginEnd="4dp"
+            android:ellipsize="end"
+            android:maxLines="2"
+            android:textColor="#666"
+            android:textSize="10sp" />
+
+        <Button
+            android:id="@+id/iuw_moni_native_ad_call_to_action"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_below="@+id/iuw_moni_nl_fb_content2"
+            android:layout_margin="8dp"
+            android:background="#4286F4"
+            android:ellipsize="end"
+            android:maxLines="1"
+            android:textColor="@android:color/white"
+            android:textSize="12sp" />
+
+    </RelativeLayout>
+
+</com.facebook.ads.NativeAdLayout>

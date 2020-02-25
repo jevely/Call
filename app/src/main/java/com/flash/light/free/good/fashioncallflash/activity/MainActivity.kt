@@ -56,6 +56,7 @@ class MainActivity : BaseActivity(), View.OnClickListener {
         main_viewpager = findViewById(R.id.main_viewpager)
         main_tab = findViewById(R.id.main_tab)
 
+        main_viewpager.offscreenPageLimit = ViewPager2.OFFSCREEN_PAGE_LIMIT_DEFAULT
         adapter = MainViewpagerAdapter(this)
         main_viewpager.adapter = adapter
 
