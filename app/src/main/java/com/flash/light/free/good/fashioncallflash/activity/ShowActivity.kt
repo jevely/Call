@@ -49,7 +49,12 @@ class ShowActivity : BaseActivity() {
         val intent = intent
         val position = intent.getIntExtra("position", 0)
         val classify = intent.getIntExtra("classify", 0)
-        themeContent = DataTool.getInstance().allTheme[classify][position]
+
+        themeContent = if (classify == -1) {
+            DataTool.getInstance().themeList[position]
+        } else {
+            DataTool.getInstance().allTheme[classify][position]
+        }
 
         call_load = findViewById(R.id.call_load)
         calltheme = findViewById(R.id.calltheme)

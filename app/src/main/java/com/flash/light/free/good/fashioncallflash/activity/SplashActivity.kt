@@ -1,4 +1,4 @@
-package com.flash.light.free.good.fashioncallflash.activity
+package activity
 
 import android.animation.Animator
 import android.animation.AnimatorSet
@@ -10,6 +10,9 @@ import android.view.KeyEvent
 import android.widget.ImageView
 import android.widget.TextView
 import com.flash.light.free.good.fashioncallflash.R
+import com.flash.light.free.good.fashioncallflash.activity.BaseActivity
+import com.flash.light.free.good.fashioncallflash.activity.MainActivity
+import com.flash.light.free.good.fashioncallflash.activity.OldMainActivity
 
 
 class SplashActivity : BaseActivity() {
@@ -34,11 +37,10 @@ class SplashActivity : BaseActivity() {
 //            e.printStackTrace();
 //        }
 
-        imageView = findViewById(com.flash.light.free.good.fashioncallflash.R.id.imageView)
-        textView = findViewById(com.flash.light.free.good.fashioncallflash.R.id.textView)
+        imageView = findViewById(R.id.imageView)
+        textView = findViewById(R.id.textView)
 
         animatorStart()
-
     }
 
     fun animatorStart() {
@@ -81,7 +83,7 @@ class SplashActivity : BaseActivity() {
                     startActivity(
                         Intent(
                             this@SplashActivity,
-                            MainActivity::class.java
+                            OldMainActivity::class.java
                         )
                     )
                     finish()
