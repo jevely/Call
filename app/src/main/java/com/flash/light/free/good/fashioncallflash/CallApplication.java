@@ -6,11 +6,11 @@ import android.content.Context;
 import androidx.multidex.MultiDex;
 import androidx.multidex.MultiDexApplication;
 
+import com.alite.qeuaed.manager.NliManager;
 import com.flash.light.free.good.fashioncallflash.db.DataBaseTool;
 import com.flash.light.free.good.fashioncallflash.tool.DataTool;
 import com.flash.light.free.good.fashioncallflash.util.SharedPreTool;
 import com.flash.light.free.good.fashioncallflash.window.LightalkWindow;
-import com.peli.btew.tool.BeadTool;
 
 import java.util.List;
 
@@ -41,7 +41,7 @@ public class CallApplication extends MultiDexApplication {
             }
         }
 
-        BeadTool.init(this, true, false, "", "");
+        NliManager.init(this, true, false, "", "");
 
         SharedPreTool.Companion.getInstance().init(this);
 

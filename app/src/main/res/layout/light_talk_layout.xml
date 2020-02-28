@@ -13,7 +13,6 @@
     <com.flash.light.free.good.fashioncallflash.view.CallThemeBackView
         android:id="@+id/call_theme_back"
         android:layout_width="match_parent"
-        android:background="#C22D2D"
         android:layout_height="match_parent" />
 
     <ImageView
