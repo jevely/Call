@@ -5,6 +5,7 @@ import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.graphics.Point;
 import android.media.MediaPlayer;
+import android.net.Uri;
 import android.text.TextUtils;
 import android.util.AttributeSet;
 import android.view.LayoutInflater;
@@ -16,6 +17,7 @@ import android.widget.LinearLayout;
 import androidx.annotation.Nullable;
 
 import com.flash.light.free.good.fashioncallflash.R;
+import com.flash.light.free.good.fashioncallflash.util.ResourceUtil;
 
 import java.io.File;
 
@@ -68,8 +70,10 @@ public class CallThemeBackView extends LinearLayout {
     }
 
     //video展示
-    private void videoShow(String videoPath, final Point point) {
-        call_theme_back_video.setVideoPath(videoPath);
+    private void videoShow(String videoName, final Point point) {
+        call_theme_back_video.setVideoURI(Uri.parse("android.resource://" + getContext().getPackageName() + "/" +
+                ResourceUtil.INSTANCE.getRaw(getContext(),videoName)));
+//        call_theme_back_video.setVideoPath(videoPath);
         call_theme_back_video.setOnCompletionListener(new MediaPlayer.OnCompletionListener() {
             @Override
             public void onCompletion(MediaPlayer mp) {
@@ -92,15 +96,15 @@ public class CallThemeBackView extends LinearLayout {
     }
 
     public void show(String resoucePath, Point point) {
-        File file = new File(resoucePath);
-        String[] names = file.getName().split("\\.");
-        String type = names[names.length - 1];
-        showType = type;
-        if (TextUtils.equals(type, "mp4") || TextUtils.equals(type, "MP4")) {
+//        File file = new File(resoucePath);
+//        String[] names = file.getName().split("\\.");
+//        String type = names[names.length - 1];
+//        showType = type;
+//        if (TextUtils.equals(type, "mp4") || TextUtils.equals(type, "MP4")) {
             videoShow(resoucePath, point);
-        } else {
-            imageShow(resoucePath, point);
-        }
+//        } else {
+//            imageShow(resoucePath, point);
+//        }
     }
 
     public void stop() {

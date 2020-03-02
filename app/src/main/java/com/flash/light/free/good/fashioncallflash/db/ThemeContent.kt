@@ -10,18 +10,16 @@ class ThemeContent {
     @PrimaryKey
     var id: Int? = null
 
-    var image_url: String? = null
+    var image_url: Int? = null
 
-    var video_url: String? = null
+    var video_url: Int? = null
 
-    var path: String = ""
+    var video_name: String? = null
 
     var isOpen: Boolean = false
-
-    var isDownload: Boolean = false
 
     var type: Int = 1
 
     @Ignore
-    var fbNativeAd : NativeAd?= null
+    var fbNativeAd: NativeAd? = null
 }

@@ -15,8 +15,6 @@ import com.bumptech.glide.Glide
 import com.flash.light.free.good.fashioncallflash.CallApplication
 import com.flash.light.free.good.fashioncallflash.R
 import com.flash.light.free.good.fashioncallflash.db.ThemeContent
-import com.flash.light.free.good.fashioncallflash.net.DownloadCallBack
-import com.flash.light.free.good.fashioncallflash.net.NetTool
 import com.flash.light.free.good.fashioncallflash.tool.ContactTool
 import com.flash.light.free.good.fashioncallflash.tool.DataTool
 import com.flash.light.free.good.fashioncallflash.tool.NotificationTool
@@ -30,7 +28,6 @@ class ShowActivity : BaseActivity() {
     private lateinit var calltheme: CallThemeBackView
     private lateinit var show_iv: ImageView
     private lateinit var call_bt: Button
-    private lateinit var download_bt: Button
     private var SET_REQUEST = 1
     private lateinit var call_load: RelativeLayout
     private lateinit var downloadThread: Thread
@@ -48,19 +45,13 @@ class ShowActivity : BaseActivity() {
     private fun init() {
         val intent = intent
         val position = intent.getIntExtra("position", 0)
-        val classify = intent.getIntExtra("classify", 0)
 
-        themeContent = if (classify == -1) {
-            DataTool.getInstance().themeList[position]
-        } else {
-            DataTool.getInstance().allTheme[classify][position]
-        }
+        themeContent = DataTool.getInstance().themeList[position]
 
         call_load = findViewById(R.id.call_load)
         calltheme = findViewById(R.id.calltheme)
         show_iv = findViewById(R.id.show_iv)
         call_bt = findViewById(R.id.call_bt)
-        download_bt = findViewById(R.id.download_bt)
 
         Glide
             .with(this)
@@ -139,21 +130,17 @@ class ShowActivity : BaseActivity() {
 //                SET_REQUEST
 //            )
         } else {
-            startDownload()
+            handler.sendEmptyMessage(0)
         }
 
 
         val url = SharedPreTool.getInstance().getString(SharedPreTool.SELECT_THEME)
-        if (TextUtils.equals(url, themeContent.video_url)) {
+        if (TextUtils.equals(url, themeContent.video_name)) {
             call_bt.text = resources.getString(R.string.theme_select)
         }
 
         call_bt.setOnClickListener {
             permissionRequest()
-        }
-
-        download_bt.setOnClickListener {
-            startDownload()
         }
     }
 
@@ -162,14 +149,7 @@ class ShowActivity : BaseActivity() {
             super.handleMessage(msg)
             if (msg.what == 0) {
                 call_bt.visibility = View.VISIBLE
-                calltheme.show(msg.obj as String?, getScreen())
-            } else if (msg.what == 1) {
-                Toast.makeText(
-                    CallApplication.getContext(),
-                    "Download error",
-                    Toast.LENGTH_SHORT
-                ).show()
-                download_bt.visibility = View.VISIBLE
+                calltheme.show(themeContent.video_name, getScreen())
             }
             call_load.visibility = View.GONE
         }
@@ -188,7 +168,7 @@ class ShowActivity : BaseActivity() {
         ) {
             if (requestCode == SET_REQUEST) {
                 ContactTool.getInstence().getAllContact()
-                startDownload()
+                handler.sendEmptyMessage(0)
             }
         }
     }
@@ -209,36 +189,6 @@ class ShowActivity : BaseActivity() {
                 Toast.LENGTH_SHORT
             ).show()
         }
-    }
-
-    private fun startDownload() {
-        download_bt.visibility = View.GONE
-        call_load.visibility = View.VISIBLE
-        downloadThread = Thread(Runnable {
-            try {
-                NetTool.downloadWallPaper(
-                    themeContent.video_url,
-                    object : DownloadCallBack {
-                        override fun downloadSuccess(path: String) {
-                            Logger.d("下载主题完成")
-                            val msg = handler.obtainMessage()
-                            msg.what = 0
-                            msg.obj = path
-                            handler.sendMessage(msg)
-                        }
-
-                        override fun downloadError() {
-                            Logger.d("下载主题出错")
-                            handler.sendEmptyMessage(1)
-                        }
-                    })
-            } catch (e: Exception) {
-                e.printStackTrace()
-                Logger.d("现在线程终止")
-                handler.sendEmptyMessage(1)
-            }
-        })
-        downloadThread.start()
     }
 
     override fun onDestroy() {
@@ -337,7 +287,7 @@ class ShowActivity : BaseActivity() {
         }
 
         SharedPreTool.getInstance()
-            .putString(SharedPreTool.SELECT_THEME, themeContent.video_url!!)
+            .putString(SharedPreTool.SELECT_THEME, themeContent.video_name!!)
         call_bt.text = resources.getString(R.string.theme_select)
         Toast.makeText(this@ShowActivity, "success", Toast.LENGTH_SHORT).show()
         SharedPreTool.getInstance().putBoolean(SharedPreTool.CALL_THEME_SWITCH, true)

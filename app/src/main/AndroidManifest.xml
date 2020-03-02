@@ -32,7 +32,6 @@
         android:label="@string/app_name"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".activity.OldMainActivity"/>
         <activity android:name=".activity.AboutActivity" />
         <activity android:name=".activity.SettingActivity" />
 
@@ -68,7 +67,7 @@
         </activity-alias>
 
         <activity
-            android:name=".activity.MainActivity"
+            android:name=".activity.OldMainActivity"
             android:excludeFromRecents="true"
             android:launchMode="singleTask"
             android:screenOrientation="nosensor">

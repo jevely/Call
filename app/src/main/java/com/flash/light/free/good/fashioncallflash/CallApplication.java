@@ -47,7 +47,6 @@ public class CallApplication extends MultiDexApplication {
 
         DataBaseTool.Companion.getInstance().initDataBase(this);
         DataTool.Companion.getInstance().initData();
-        DataTool.Companion.getInstance().initDataNew();
 
         LightalkWindow.getInstence().initView(this, true);
     }

@@ -202,10 +202,10 @@ public class LightalkWindow {
             call_theme_back.setViewSize(ScreenTool.Companion.getInstance().getAllScreen().x, ScreenTool.Companion.getInstance().getAllScreen().y);
 
             ThemeContent content = DataBaseTool.Companion.getInstance().find(SharedPreTool.Companion.getInstance().getString(SharedPreTool.SELECT_THEME));
-            if (content == null || TextUtils.isEmpty(content.getPath())) {
+            if (content == null || TextUtils.isEmpty(content.getVideo_name())) {
                 return;
             }
-            call_theme_back.show(content.getPath(), ScreenTool.Companion.getInstance().getAllScreen());
+            call_theme_back.show(content.getVideo_name(), ScreenTool.Companion.getInstance().getAllScreen());
             wm.addView(mView, layoutParams);
 //            MainApplication.getInstance().isCallShow = true;
             showAnim = true;

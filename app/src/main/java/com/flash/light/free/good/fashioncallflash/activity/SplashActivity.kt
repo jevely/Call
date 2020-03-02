@@ -11,7 +11,6 @@ import android.widget.ImageView
 import android.widget.TextView
 import com.flash.light.free.good.fashioncallflash.R
 import com.flash.light.free.good.fashioncallflash.activity.BaseActivity
-import com.flash.light.free.good.fashioncallflash.activity.MainActivity
 import com.flash.light.free.good.fashioncallflash.activity.OldMainActivity
 
 

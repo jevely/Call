@@ -3,22 +3,15 @@ package com.flash.light.free.good.fashioncallflash.activity
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.view.LayoutInflater
 import android.view.View
 import android.widget.ImageView
-import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
-import androidx.viewpager2.widget.ViewPager2
 import com.flash.light.free.good.fashioncallflash.R
 import com.flash.light.free.good.fashioncallflash.adapter.MainAdapter
-import com.flash.light.free.good.fashioncallflash.adapter.MainViewpagerAdapter
-import com.flash.light.free.good.fashioncallflash.adapter.ThemeAdapter
-import com.flash.light.free.good.fashioncallflash.tool.DataTool
 import com.flash.light.free.good.fashioncallflash.tool.ScreenTool
 import com.flash.light.free.good.fashioncallflash.util.SharedPreTool
 import com.flash.light.free.good.fashioncallflash.util.setWhite
 import com.flash.light.free.good.fashioncallflash.view.NewGridManager
-import com.google.android.material.tabs.TabLayout
 
 class OldMainActivity : AppCompatActivity(), View.OnClickListener {
 

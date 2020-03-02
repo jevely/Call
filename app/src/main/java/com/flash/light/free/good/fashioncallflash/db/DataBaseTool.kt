@@ -41,7 +41,7 @@ class DataBaseTool private constructor() {
 //    }
 
     fun insertWords(themeContent: ThemeContent) {
-        val theme = find(themeContent.video_url!!)
+        val theme = find(themeContent.video_name!!)
         if (theme == null) {
             themeDataBase?.themeDao()?.insert(themeContent)
         } else {
@@ -50,7 +50,7 @@ class DataBaseTool private constructor() {
     }
 
     fun updateWords(themeContent: ThemeContent) {
-        val theme = find(themeContent.video_url!!)
+        val theme = find(themeContent.video_name!!)
         if (theme == null) {
             insertWords(themeContent)
         } else {
