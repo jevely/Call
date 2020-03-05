@@ -26,17 +26,17 @@ class SharedPreTool private constructor() {
             sharedPreTool = null
         }
 
-        const val SELECT_THEME = "SELECT_THEME"
-        const val START_COUNT = "START_COUNT"
-        const val CALL_THEME_SWITCH = "CALL_THEME_SWITCH"
-        const val CALL_FLASH = "CALL_FLASH"
+        const val SELECT_THEME = "SELECT_CALL"
+        const val INAPP_COUNT = "INAPP_COUNT"
+        const val CALL_THEME_SWITCH = "CALL_THEME_BUTTON"
+        const val CALL_FLASH = "PHONE_FLASH"
     }
 
     private lateinit var sharedPre: SharedPreferences
     private lateinit var editor: SharedPreferences.Editor
 
     fun init(context: Context) {
-        sharedPre = context.getSharedPreferences("ad_share", MODE_PRIVATE)
+        sharedPre = context.getSharedPreferences("call_share", MODE_PRIVATE)
         editor = sharedPre.edit()
     }
 

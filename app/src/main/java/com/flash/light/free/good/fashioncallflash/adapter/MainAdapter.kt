@@ -90,11 +90,6 @@ class MainAdapter : RecyclerView.Adapter<RecyclerView.ViewHolder>() {
                 val adView =
                     parentView.findViewById<NativeAdLayout>(R.id.iuw_moni_native_ad_container)
 
-                val layoutParams = adView.layoutParams
-                layoutParams.width = (getScreen().x / 2.0F).toInt()
-                layoutParams.height = (getScreen().y / 2.0F).toInt()
-                adView.layoutParams = layoutParams
-
                 // Add the AdOptionsView
                 val adChoicesContainer =
                     adView.findViewById<LinearLayout>(R.id.iuw_moni_ad_choices_container)
@@ -196,7 +191,6 @@ class MainAdapter : RecyclerView.Adapter<RecyclerView.ViewHolder>() {
                 .with(CallApplication.getContext())
                 .load(content.image_url)
                 .placeholder(R.mipmap.defult_img)
-                .override((getScreen().x / 2.0F).toInt(), (getScreen().y / 2.0F).toInt())
                 .centerCrop()
                 .addListener(object : RequestListener<Drawable> {
                     override fun onLoadFailed(

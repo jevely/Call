@@ -46,7 +46,7 @@ class SplashActivity : BaseActivity() {
         val set = AnimatorSet()
         val set2 = AnimatorSet()
         set.playTogether(
-            ObjectAnimator.ofFloat(imageView, "translationY", 100f, 0f),
+//            ObjectAnimator.ofFloat(imageView, "translationY", 100f, 0f),
             ObjectAnimator.ofFloat(imageView, "alpha", 0f, 1f)
         )
         set2.playTogether(

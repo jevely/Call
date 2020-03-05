@@ -11,6 +11,8 @@ import android.text.TextUtils;
 
 import androidx.core.app.NotificationManagerCompat;
 
+import com.flash.light.free.good.fashioncallflash.R;
+import com.flash.light.free.good.fashioncallflash.activity.PermissionTipActivity;
 import com.flash.light.free.good.fashioncallflash.service.NotiService;
 
 import java.util.Set;
@@ -28,15 +30,14 @@ public class NotificationTool {
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.JELLY_BEAN_MR2)
             context.startActivityForResult(new Intent(Settings
                     .ACTION_NOTIFICATION_LISTENER_SETTINGS), 3);
-//        showTip(context, R.string.permission_open_notify_tip);
+        showTip(context);
     }
 
     //弹出提示界面
-    private static void showTip(Activity activity, int contentID) {
-//        Intent intent = new Intent(activity, PermissionTipActivity.class);
-//        intent.putExtra("permission_tip", activity.getResources().getString(contentID));
-//        intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
-//        activity.startActivity(intent);
+    private static void showTip(Activity activity) {
+        Intent intent = new Intent(activity, PermissionTipActivity.class);
+        intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+        activity.startActivity(intent);
     }
 
     /**
@@ -59,23 +60,4 @@ public class NotificationTool {
         }
         return false;
     }
-
-    /**
-     * 判断是否工作
-     */
-    public static boolean isNotifyWork(Context context) {
-        Set<String> packageNames = NotificationManagerCompat.getEnabledListenerPackages(context);
-        return packageNames.contains(context.getPackageName());
-    }
-
-    //重新开启NotificationMonitor
-    public static void toggleNotificationListenerService(Context context) {
-        ComponentName thisComponent = new ComponentName(context, NotiService.class);
-        PackageManager pm = context.getPackageManager();
-        pm.setComponentEnabledSetting(thisComponent, PackageManager
-                .COMPONENT_ENABLED_STATE_DISABLED, PackageManager.DONT_KILL_APP);
-        pm.setComponentEnabledSetting(thisComponent, PackageManager
-                .COMPONENT_ENABLED_STATE_ENABLED, PackageManager.DONT_KILL_APP);
-    }
-
 }

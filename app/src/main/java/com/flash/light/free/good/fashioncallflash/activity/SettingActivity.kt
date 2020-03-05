@@ -17,7 +17,6 @@ class SettingActivity : AppCompatActivity(), View.OnClickListener {
     private lateinit var setting_call_switch: SwitchCompat
     private lateinit var setting_flash_switch: SwitchCompat
     private lateinit var setting_contact_re: RelativeLayout
-    private lateinit var setting_about_re: RelativeLayout
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -26,7 +25,6 @@ class SettingActivity : AppCompatActivity(), View.OnClickListener {
         setting_call_switch = findViewById(R.id.setting_call_switch)
         setting_flash_switch = findViewById(R.id.setting_flash_switch)
         setting_contact_re = findViewById(R.id.setting_contact_re)
-        setting_about_re = findViewById(R.id.setting_about_re)
 
         val call_theme_switch =
             SharedPreTool.getInstance().getBoolean(SharedPreTool.CALL_THEME_SWITCH)
@@ -38,7 +36,6 @@ class SettingActivity : AppCompatActivity(), View.OnClickListener {
 
         setting_back.setOnClickListener(this)
         setting_contact_re.setOnClickListener(this)
-        setting_about_re.setOnClickListener(this)
 
         initView()
     }
@@ -49,9 +46,6 @@ class SettingActivity : AppCompatActivity(), View.OnClickListener {
             R.id.setting_contact_re -> {
                 ContactTool.getInstence().getAllContact()
                 Toast.makeText(CallApplication.getContext(), "Success", Toast.LENGTH_SHORT).show()
-            }
-            R.id.setting_about_re -> {
-                startActivity(Intent(this@SettingActivity, AboutActivity::class.java))
             }
         }
     }

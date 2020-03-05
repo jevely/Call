@@ -232,7 +232,11 @@ class ShowActivity : BaseActivity() {
                     }
 
                     override fun cancel() {
-                        ToastUtil.show(R.string.dialog_permission_fail)
+                        Toast.makeText(
+                            this@ShowActivity,
+                            resources.getString(R.string.dialog_permission_fail),
+                            Toast.LENGTH_SHORT
+                        ).show()
                     }
                 })
                 permissionDialog.show()
@@ -251,7 +255,11 @@ class ShowActivity : BaseActivity() {
                     }
 
                     override fun cancel() {
-                        ToastUtil.show(R.string.dialog_permission_fail)
+                        Toast.makeText(
+                            this@ShowActivity,
+                            resources.getString(R.string.dialog_permission_fail),
+                            Toast.LENGTH_SHORT
+                        ).show()
                     }
                 })
                 permissionDialog.show()
@@ -277,7 +285,11 @@ class ShowActivity : BaseActivity() {
                 }
 
                 override fun cancel() {
-                    ToastUtil.show(R.string.dialog_permission_fail)
+                    Toast.makeText(
+                        this@ShowActivity,
+                        resources.getString(R.string.dialog_permission_fail),
+                        Toast.LENGTH_SHORT
+                    ).show()
                 }
             })
             permissionDialog.show()

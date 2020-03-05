@@ -2,35 +2,26 @@
 <com.facebook.ads.NativeAdLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:id="@+id/iuw_moni_native_ad_container"
     android:layout_width="match_parent"
-    android:layout_height="wrap_content">
+    android:layout_height="match_parent">
 
     <RelativeLayout
         android:id="@+id/iuw_moni_nl_bf_parent"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:padding="4dp"
-        android:orientation="vertical">
+        android:layout_height="wrap_content">
 
         <LinearLayout
             android:id="@+id/iuw_moni_nl_fb_title_ll"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="4dp"
+            android:layout_marginTop="8dp"
             android:gravity="center_vertical"
             android:orientation="horizontal">
-
-            <com.facebook.ads.MediaView
-                android:id="@+id/iuw_moni_native_ad_icon"
-                android:layout_width="25dp"
-                android:layout_height="25dp"
-                android:layout_below="@+id/iuw_moni_nl_fb_title_ll"
-                android:layout_marginStart="8dp" />
 
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="8dp"
-                android:padding="4dp"
+                android:padding="8dp"
                 android:text="Ad"
                 android:textColor="#99ACACAC"
                 android:textSize="12sp"
@@ -45,30 +36,40 @@
                 android:orientation="horizontal" />
         </LinearLayout>
 
+        <com.facebook.ads.MediaView
+            android:id="@+id/iuw_moni_native_ad_icon"
+            android:layout_width="60dp"
+            android:layout_height="60dp"
+            android:layout_below="@+id/iuw_moni_nl_fb_title_ll"
+            android:layout_centerHorizontal="true"
+            android:layout_marginStart="8dp" />
+
         <TextView
             android:id="@+id/iuw_moni_native_ad_title"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_below="@+id/iuw_moni_nl_fb_title_ll"
-            android:layout_marginStart="4dp"
-            android:layout_marginTop="4dp"
-            android:layout_marginEnd="4dp"
+            android:layout_below="@+id/iuw_moni_native_ad_icon"
+            android:layout_marginStart="8dp"
+            android:layout_marginTop="8dp"
+            android:layout_marginEnd="8dp"
             android:ellipsize="end"
+            android:gravity="center"
             android:maxLines="2"
             android:textColor="#666"
-            android:textSize="10sp" />
+            android:textSize="16sp" />
 
         <TextView
             android:id="@+id/iuw_moni_native_ad_translation"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_below="@+id/iuw_moni_native_ad_title"
-            android:layout_marginStart="4dp"
-            android:layout_marginEnd="4dp"
+            android:layout_marginStart="8dp"
+            android:layout_marginEnd="8dp"
             android:ellipsize="end"
+            android:gravity="center"
             android:maxLines="1"
             android:textColor="#666"
-            android:textSize="10sp"
+            android:textSize="14sp"
             android:textStyle="bold" />
 
         <FrameLayout
@@ -76,7 +77,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_below="@+id/iuw_moni_native_ad_translation"
-            android:layout_marginTop="4dp">
+            android:layout_marginTop="16dp">
 
             <com.facebook.ads.MediaView
                 android:id="@+id/iuw_moni_native_ad_media"
@@ -105,38 +106,44 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_below="@+id/iuw_moni_nl_bf_fl"
-            android:layout_marginStart="4dp"
-            android:layout_marginTop="2dp"
-            android:layout_marginEnd="4dp"
+            android:layout_marginStart="8dp"
+            android:layout_marginTop="20dp"
+            android:layout_marginEnd="8dp"
             android:ellipsize="end"
             android:maxLines="1"
             android:textColor="#666"
-            android:textSize="10sp" />
+            android:textSize="16sp" />
 
         <TextView
             android:id="@+id/iuw_moni_nl_fb_content2"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_below="@+id/iuw_moni_nl_fb_content1"
-            android:layout_marginStart="4dp"
-            android:layout_marginTop="2dp"
-            android:layout_marginEnd="4dp"
+            android:layout_marginStart="8dp"
+            android:layout_marginTop="16dp"
+            android:layout_marginEnd="8dp"
             android:ellipsize="end"
             android:maxLines="2"
             android:textColor="#666"
-            android:textSize="10sp" />
+            android:textSize="14sp" />
 
-        <Button
-            android:id="@+id/iuw_moni_native_ad_call_to_action"
+        <RelativeLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:layout_below="@+id/iuw_moni_nl_fb_content2"
-            android:layout_margin="8dp"
-            android:background="#4286F4"
-            android:ellipsize="end"
-            android:maxLines="1"
-            android:textColor="@android:color/white"
-            android:textSize="12sp" />
+            android:layout_below="@+id/iuw_moni_nl_fb_content2">
+
+            <Button
+                android:id="@+id/iuw_moni_native_ad_call_to_action"
+                android:layout_width="match_parent"
+                android:layout_height="60dp"
+                android:layout_centerInParent="true"
+                android:layout_margin="32dp"
+                android:background="#4286F4"
+                android:ellipsize="end"
+                android:maxLines="1"
+                android:textColor="@android:color/white"
+                android:textSize="14sp" />
+        </RelativeLayout>
 
     </RelativeLayout>
 
