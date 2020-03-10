@@ -13,7 +13,7 @@
         android:visibility="gone" />
 
     <!--video-->
-    <com.flash.light.free.good.fashioncallflash.view.NewVideoView
+    <com.flash.light.free.good.flash.view.NewVideoView
         android:id="@+id/call_theme_back_video"
         android:layout_width="match_parent"
         android:layout_height="match_parent"

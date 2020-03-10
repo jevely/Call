@@ -10,7 +10,7 @@
         android:layout_height="match_parent"
         android:scaleType="centerCrop" />
 
-    <com.flash.light.free.good.fashioncallflash.view.CallThemeBackView
+    <com.flash.light.free.good.flash.view.CallThemeBackView
         android:id="@+id/call_theme_back"
         android:layout_width="match_parent"
         android:layout_height="match_parent" />

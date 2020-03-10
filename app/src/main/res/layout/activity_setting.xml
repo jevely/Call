@@ -24,7 +24,7 @@
             android:layout_centerVertical="true"
             android:layout_toRightOf="@+id/setting_back"
             android:text="Setting"
-            android:textColor="@color/nomal_text"
+            android:textColor="@color/nomal_text2"
             android:textSize="18sp"
             android:textStyle="bold" />
 
@@ -44,7 +44,7 @@
             android:layout_height="wrap_content"
             android:padding="16dp"
             android:text="Call Theme"
-            android:textColor="@color/nomal_text"
+            android:textColor="@color/nomal_text2"
             android:textSize="16sp" />
 
         <androidx.appcompat.widget.SwitchCompat
@@ -71,7 +71,7 @@
             android:layout_height="wrap_content"
             android:padding="16dp"
             android:text="Call Flash"
-            android:textColor="@color/nomal_text"
+            android:textColor="@color/nomal_text2"
             android:textSize="16sp" />
 
         <androidx.appcompat.widget.SwitchCompat
@@ -99,7 +99,7 @@
             android:layout_height="wrap_content"
             android:padding="16dp"
             android:text="Refresh contacts"
-            android:textColor="@color/nomal_text"
+            android:textColor="@color/nomal_text2"
             android:textSize="16sp" />
     </RelativeLayout>
 

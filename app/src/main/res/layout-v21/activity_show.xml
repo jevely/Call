@@ -4,7 +4,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/activity_back"
-    tools:context=".activity.ShowActivity">
+    tools:context=".activity.ContentActivity">
 
     <ImageView
         android:id="@+id/show_iv"
@@ -13,7 +13,7 @@
         android:scaleType="centerCrop"
         android:transitionName="shareTransition" />
 
-    <com.flash.light.free.good.fashioncallflash.view.CallThemeBackView
+    <com.flash.light.free.good.flash.view.CallThemeBackView
         android:id="@+id/calltheme"
         android:layout_width="match_parent"
         android:layout_height="match_parent" />
